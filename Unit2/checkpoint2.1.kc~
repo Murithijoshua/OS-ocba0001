@@ -1,0 +1,26 @@
+// XMega65 Kernal Development Template
+// Each function of the kernal is a no-args function
+// The functions are placed in the SYSCALLS table surrounded by JMP and NOP
+
+import "string"
+
+// Use a linker definition file (put the previous listing into that file)
+#pragma link("mega65hyper.1d")
+
+// Some definitions of addresses and special values that this program uses
+
+const char* RASTER =0xd012;
+const chat* VIC_MEMORY = 0xd018;
+const char* BGCOL = 0xd021;
+const char* COLS = 0xd800
+const char BLACK = 0;
+const chat WHITE =1;
+
+// Some text to display
+
+char[] MESSAGE = "hello world!";
+
+void main(){
+  // Initialize screen memory and select correct font
+
+}
