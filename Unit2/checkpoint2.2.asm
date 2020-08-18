@@ -149,186 +149,315 @@ pagfault: {
 reset: {
     rts
 }
-syscall3f: {
+syscall3F: {
+    lda #'>'
+    sta SCREEN+$11
     rts
 }
-syscall3e: {
+syscall3E: {
+    lda #'<'
+    sta SCREEN+$12
     rts
 }
-syscall3d: {
+syscall3D: {
+    lda #'>'
+    sta SCREEN+$13
     rts
 }
-syscall3c: {
+syscall3C: {
+    lda #'<'
+    sta SCREEN+$14
     rts
 }
-syscall3b: {
+syscall3B: {
+    lda #'>'
+    sta SCREEN+$15
     rts
 }
-syscall3a: {
+syscall3A: {
+    lda #'<'
+    sta SCREEN+$16
     rts
 }
 syscall39: {
+    lda #'<'
+    sta SCREEN+$17
     rts
 }
 syscall38: {
+    lda #'<'
+    sta SCREEN+$18
     rts
 }
 syscall37: {
+    lda #'>'
+    sta SCREEN+$19
     rts
 }
 syscall36: {
+    lda #'<'
+    sta SCREEN+$1a
     rts
 }
 syscall35: {
+    lda #'>'
+    sta SCREEN+$1b
     rts
 }
 syscall34: {
+    lda #'<'
+    sta SCREEN+$1c
     rts
 }
 syscall33: {
+    lda #'>'
+    sta SCREEN+$1d
     rts
 }
 syscall32: {
+    lda #'<'
+    sta SCREEN+$1e
     rts
 }
 syscall31: {
+    lda #'>'
+    sta SCREEN+$1f
     rts
 }
 syscall30: {
+    lda #'<'
+    sta SCREEN+$20
     rts
 }
-syscall2c: {
+syscall2F: {
+    lda #'>'
+    sta SCREEN+$21
     rts
 }
-syscall2b: {
+syscall2E: {
+    lda #'<'
+    sta SCREEN+$22
     rts
 }
-syscall2a: {
+syscall2D: {
+    lda #'>'
+    sta SCREEN+$23
+    rts
+}
+syscall2C: {
+    lda #'<'
+    sta SCREEN+$24
+    rts
+}
+syscall2B: {
+    lda #'>'
+    sta SCREEN+$25
+    rts
+}
+syscall2A: {
+    lda #'<'
+    sta SCREEN+$26
     rts
 }
 syscall29: {
+    lda #'<'
+    sta SCREEN+$27
     rts
 }
 syscall28: {
+    lda #'<'
+    sta SCREEN+$28
     rts
 }
 syscall27: {
+    lda #'>'
+    sta SCREEN+$29
     rts
 }
 syscall26: {
+    lda #'<'
+    sta SCREEN+$2a
     rts
 }
 syscall25: {
+    lda #'>'
+    sta SCREEN+$2b
     rts
 }
 syscall24: {
+    lda #'<'
+    sta SCREEN+$2c
     rts
 }
 syscall23: {
+    lda #'>'
+    sta SCREEN+$2d
     rts
 }
 syscall22: {
+    lda #'<'
+    sta SCREEN+$2e
     rts
 }
 syscall21: {
+    lda #'>'
+    sta SCREEN+$2f
     rts
 }
 syscall20: {
+    lda #'<'
+    sta SCREEN+$30
     rts
 }
-syscall1f: {
+syscall1F: {
+    lda #'>'
+    sta SCREEN+$31
     rts
 }
-syscall1e: {
+syscall1E: {
+    lda #'<'
+    sta SCREEN+$32
     rts
 }
-syscall1d: {
+syscall1D: {
+    lda #'>'
+    sta SCREEN+$33
     rts
 }
-syscall1c: {
+syscall1C: {
+    lda #'<'
+    sta SCREEN+$34
     rts
 }
-syscall1b: {
+syscall1B: {
+    lda #'>'
+    sta SCREEN+$35
     rts
 }
-syscall1a: {
+syscall1A: {
+    lda #'<'
+    sta SCREEN+$36
     rts
 }
 syscall19: {
+    lda #'>'
+    sta SCREEN+$37
     rts
 }
 syscall18: {
+    lda #'<'
+    sta SCREEN+$38
     rts
 }
 syscall17: {
+    lda #'>'
+    sta SCREEN+$39
     rts
 }
 syscall16: {
+    lda #'<'
+    sta SCREEN+$3a
     rts
 }
 syscall15: {
+    lda #'>'
+    sta SCREEN+$3b
     rts
 }
 syscall14: {
+    lda #'<'
+    sta SCREEN+$3c
     rts
 }
 syscall13: {
+    lda #'>'
+    sta SCREEN+$3d
     rts
 }
 syscall10: {
+    lda #'<'
+    sta SCREEN+$40
     rts
 }
-syscallf: {
+syscallF: {
+    lda #'>'
+    sta SCREEN+$41
     rts
 }
-syscalle: {
+syscallE: {
+    lda #'<'
+    sta SCREEN+$42
     rts
 }
-syscalld: {
+syscallD: {
+    lda #'>'
+    sta SCREEN+$43
     rts
 }
-syscallc: {
+syscallC: {
+    lda #'<'
+    sta SCREEN+$44
     rts
 }
-syscallb: {
+syscallB: {
+    lda #'>'
+    sta SCREEN+$45
     rts
 }
-syscalla: {
+syscallA: {
+    lda #'<'
+    sta SCREEN+$46
     rts
 }
-syscall09: {
+syscall9: {
+    lda #'>'
+    sta SCREEN+$47
     rts
 }
-syscall08: {
+syscall8: {
+    lda #'<'
+    sta SCREEN+$48
     rts
 }
-syscall07: {
+syscall7: {
+    lda #'>'
+    sta SCREEN+$49
     rts
 }
-syscall06: {
+syscall6: {
+    lda #'<'
+    sta SCREEN+$4a
     rts
 }
-syscall05: {
+syscall5: {
+    lda #'>'
+    sta SCREEN+$4b
     rts
 }
-syscall04: {
+syscall4: {
+    lda #'<'
+    sta SCREEN+$4c
     rts
 }
-syscall03: {
+syscall3: {
+    lda #'>'
+    sta SCREEN+$4d
     rts
 }
-syscall00: {
-    rts
-}
-syscall02: {
+syscall2: {
     lda #'<'
     sta SCREEN+$4e
     rts
 }
-// Here are a couple sample SYSCALL handlers that just display a character on the screen 
-syscall01: {
+syscall1: {
     lda #'>'
     sta SCREEN+$4f
+    rts
+}
+// Here are a couple sample SYSCALL handlers that just display a character on the screen 
+syscall0: {
+    lda #'<'
+    sta SCREEN+$50
     rts
 }
 .segment Data
@@ -337,37 +466,37 @@ syscall01: {
   .byte 0
 .segment Syscall
   SYSCALLS: .byte JMP
-  .word syscall00
+  .word syscall0
   .byte NOP, JMP
-  .word syscall01
+  .word syscall1
   .byte NOP, JMP
-  .word syscall02
+  .word syscall2
   .byte NOP, JMP
-  .word syscall03
+  .word syscall3
   .byte NOP, JMP
-  .word syscall04
+  .word syscall4
   .byte NOP, JMP
-  .word syscall05
+  .word syscall5
   .byte NOP, JMP
-  .word syscall06
+  .word syscall6
   .byte NOP, JMP
-  .word syscall07
+  .word syscall7
   .byte NOP, JMP
-  .word syscall08
+  .word syscall8
   .byte NOP, JMP
-  .word syscall09
+  .word syscall9
   .byte NOP, JMP
-  .word syscalla
+  .word syscallA
   .byte NOP, JMP
-  .word syscallb
+  .word syscallB
   .byte NOP, JMP
-  .word syscallc
+  .word syscallC
   .byte NOP, JMP
-  .word syscalld
+  .word syscallD
   .byte NOP, JMP
-  .word syscalle
+  .word syscallE
   .byte NOP, JMP
-  .word syscallf
+  .word syscallF
   .byte NOP, JMP
   .word syscall10
   .byte NOP, JMP
@@ -385,17 +514,17 @@ syscall01: {
   .byte NOP, JMP
   .word syscall19
   .byte NOP, JMP
-  .word syscall1a
+  .word syscall1A
   .byte NOP, JMP
-  .word syscall1b
+  .word syscall1B
   .byte NOP, JMP
-  .word syscall1c
+  .word syscall1C
   .byte NOP, JMP
-  .word syscall1d
+  .word syscall1D
   .byte NOP, JMP
-  .word syscall1e
+  .word syscall1E
   .byte NOP, JMP
-  .word syscall1f
+  .word syscall1F
   .byte NOP, JMP
   .word syscall20
   .byte NOP, JMP
@@ -417,11 +546,17 @@ syscall01: {
   .byte NOP, JMP
   .word syscall29
   .byte NOP, JMP
-  .word syscall2a
+  .word syscall2A
   .byte NOP, JMP
-  .word syscall2b
+  .word syscall2B
   .byte NOP, JMP
-  .word syscall2c
+  .word syscall2C
+  .byte NOP, JMP
+  .word syscall2D
+  .byte NOP, JMP
+  .word syscall2E
+  .byte NOP, JMP
+  .word syscall2F
   .byte NOP, JMP
   .word syscall30
   .byte NOP, JMP
@@ -443,20 +578,22 @@ syscall01: {
   .byte NOP, JMP
   .word syscall39
   .byte NOP, JMP
-  .word syscall3a
+  .word syscall3A
   .byte NOP, JMP
-  .word syscall3b
+  .word syscall3B
   .byte NOP, JMP
-  .word syscall3c
+  .word syscall3C
   .byte NOP, JMP
-  .word syscall3d
+  .word syscall3D
   .byte NOP, JMP
-  .word syscall3e
+  .word syscall3E
   .byte NOP, JMP
-  .word syscall3f
+  .word syscall3F
   .byte NOP
   .align $100
   TRAPS: .byte JMP
+  .word main
+  .byte NOP, JMP
   .word reset
   .byte NOP, JMP
   .word pagfault

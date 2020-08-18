@@ -10,13 +10,13 @@ Memory Map
 XMega65Bin-segment:
 
 Syscall-segment:
-  $8000-$811f Syscall
+  $8000-$8123 Syscall
 
 Code-segment:
-  $8200-$82f6 Code
+  $8200-$8425 Code
 
 Data-segment:
-  $82f7-$8311 Data
+  $8426-$8440 Data
 
 Stack-segment:
 

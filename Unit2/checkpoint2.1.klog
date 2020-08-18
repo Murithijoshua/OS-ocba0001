@@ -16,7 +16,7 @@ Code-segment:
   $8200-$82b5 Code
 
 Data-segment:
-  $82b6-$82d2 Data
+  $82b6-$82d0 Data
 
 Stack-segment:
 

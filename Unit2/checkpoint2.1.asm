@@ -16,13 +16,14 @@
   .label COLS = $d800
   .const BLACK = 0
   .const WHITE = 1
+  // To save writing 0x4C and 0xEA all the time, we define them as constants
   .const JMP = $4c
   .const NOP = $ea
 .segment Code
 main: {
     .label sc = 4
     .label msg = 2
-    // Initialize screen memory and select correct font
+    // Initialize screen memory, and select correct font
     lda #$14
     sta VIC_MEMORY
     ldx #' '
@@ -130,7 +131,7 @@ syscall2: {
     sta SCREEN+$4e
     rts
 }
-// Here are a couple sample SYSCALL handlers that just display a character on the screen 
+// Here are a couple sample SYSCALL handlers that just display a character on the screen
 syscall1: {
     lda #'>'
     sta SCREEN+$4f
@@ -138,14 +139,21 @@ syscall1: {
 }
 .segment Data
   // Some text to display
-  MESSAGE: .text " Checkpoint 1.1 by ocba0001 "
+  MESSAGE: .text "Checkpoint 1.1 by ocba0001"
   .byte 0
 .segment Syscall
+  // Now we can have a nice table of up to 64 SYSCALL handlers expressed
+  // in a fairly readable and easy format.
+  // Each line is an instance of the struct SysCall from above, with the JMP
+  // opcode value, the address of the handler routine and the NOP opcode value.
   SYSCALLS: .byte JMP
   .word syscall1
   .byte NOP, JMP
   .word syscall2
   .byte NOP
+  // In this example we had only two SYSCALLs defined, so rather than having
+  // another 62 lines, we can just ask KickC to make the TRAP table begin
+  // at the next multiple of $100, i.e., at $8100.
   .align $100
   SYSCALL_RESET: .byte JMP
   .word main
