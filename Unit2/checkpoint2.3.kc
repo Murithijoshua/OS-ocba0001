@@ -19,10 +19,307 @@ const char WHITE =1;
 
 // Some text to display
 
-char[] MESSAGE = "Checkpoint 2.2 by ocba0001";
+char[] MESSAGE = "Checkpoint 2.3 by ocba0001";
 
 void main(){
-  // Initialize screen memory and select correct font
+}
+
+void exit_hypervisor(){
+	// Trigger exit from Hypervisor Mode
+	*(unsigned char *)$D67F = $01;
+}
+
+
+// Here are a couple sample SYSCALL handlers that just display a character on the screen 
+
+void syscall0() {
+	exit_hypervisor();
+}
+
+void syscall1() {
+	exit_hypervisor();
+}
+
+void syscall2() {
+	exit_hypervisor();
+}
+
+void syscall3(){
+	exit_hypervisor();
+}
+
+
+void syscall4() {
+	exit_hypervisor();
+}
+
+
+void syscall5(){
+	exit_hypervisor();
+}
+
+
+void syscall6() {
+	exit_hypervisor();
+}
+
+
+void syscall7() {
+	exit_hypervisor();
+}
+
+
+void syscall8() {
+	exit_hypervisor();
+}
+
+
+void syscall9() {
+	exit_hypervisor();
+}
+
+
+void syscallA() {
+	exit_hypervisor();
+}
+
+void syscallB() {
+	exit_hypervisor();
+}
+
+void syscallC() {
+	exit_hypervisor();
+}
+
+void syscallD(){
+	exit_hypervisor();
+}
+
+
+void syscallE(){
+	exit_hypervisor();
+}
+
+
+void syscallF(){
+	exit_hypervisor();
+}
+
+void syscall10() {
+	exit_hypervisor();
+}
+
+void securentr(){
+	exit_hypervisor();
+}
+
+void securexit(){
+	exit_hypervisor();
+}
+
+void syscall13() {
+	exit_hypervisor();
+}
+
+
+void syscall14(){
+	exit_hypervisor();
+}
+
+void syscall15() {
+	exit_hypervisor();
+}
+
+
+void syscall16() {
+	exit_hypervisor();
+}
+
+void syscall17() {
+	exit_hypervisor();
+}
+
+void syscall18() {
+	exit_hypervisor();
+}
+
+void syscall19() {
+	exit_hypervisor();
+}
+
+
+void syscall1A(){
+	exit_hypervisor();
+}
+
+void syscall1B() {
+	exit_hypervisor();
+}
+
+void syscall1C() {
+	exit_hypervisor();
+}
+
+void syscall1D(){
+	exit_hypervisor();
+}
+
+void syscall1E() {
+	exit_hypervisor();
+}
+
+void syscall1F() {
+	exit_hypervisor();
+}
+
+void syscall20() {
+	exit_hypervisor();
+}
+
+
+void syscall21() {
+	exit_hypervisor();
+}
+
+
+void syscall22() {
+	exit_hypervisor();
+}
+
+void syscall23() {
+	exit_hypervisor();
+}
+
+
+void syscall24() {
+	exit_hypervisor();
+}
+
+
+void syscall25() {
+	exit_hypervisor();
+}
+
+void syscall26() {
+	exit_hypervisor();
+}
+
+
+void syscall27() {
+	exit_hypervisor();
+}
+
+
+void syscall28(){
+	exit_hypervisor();
+}
+
+
+void syscall29() {
+	exit_hypervisor();
+}
+
+
+void syscall2A() {
+	exit_hypervisor();
+}
+
+
+void syscall2B() {
+	exit_hypervisor();
+}
+
+void syscall2C() {
+	exit_hypervisor();
+}
+
+
+void syscall2D() {
+	exit_hypervisor();
+}
+
+
+void syscall2E() {
+	exit_hypervisor();
+}
+
+void syscall2F() {
+	exit_hypervisor();
+}
+
+
+void syscall30() {
+	exit_hypervisor();
+}
+
+
+void syscall31() {
+	exit_hypervisor();
+}
+
+void syscall32() {
+	exit_hypervisor();
+}
+
+
+void syscall33() {
+	exit_hypervisor();
+}
+
+void syscall34(){
+	exit_hypervisor();
+}
+
+void syscall35() {
+	exit_hypervisor();
+}
+
+void syscall36() {
+	exit_hypervisor();
+}
+
+void syscall37() {
+	exit_hypervisor();
+}
+
+void syscall38() {
+	exit_hypervisor();
+}
+
+void syscall39() {
+	exit_hypervisor();
+}
+
+void syscall3A() {
+	exit_hypervisor();
+}
+
+
+void syscall3B() {
+	exit_hypervisor();
+}
+
+void syscall3C() {
+	exit_hypervisor();
+}
+
+
+void syscall3D() {
+	exit_hypervisor();
+}
+
+void syscall3E() {
+	exit_hypervisor();
+}
+
+
+void syscall3F() {
+	exit_hypervisor();
+}
+
+void reset(){
+
+// Initialize screen memory and select correct font
   *VIC_MEMORY = 0x14;
   // Fill the screen with spaces
   memset(SCREEN, ' ',40*25);
@@ -45,268 +342,35 @@ void main(){
     } else {
       *BGCOL = BLACK;
       }
-}}
-
-
-// Here are a couple sample SYSCALL handlers that just display a character on the screen 
-
-void syscall0() {
-*(SCREEN+80) = '<';
 }
 
-void syscall1() {
-*(SCREEN+79) = '>';
 }
 
-void syscall2() {
-*(SCREEN+78) = '<';
+void pagfault(){
+	exit_hypervisor();
+}
+void restorkey(){
+	exit_hypervisor();
+}
+void alttabkey(){
+	exit_hypervisor();
+}
+void vf011rd(){
+	exit_hypervisor();
+}
+void vf011wr(){
+	exit_hypervisor();
+}
+void reserved(){
+	exit_hypervisor();
+}
+void cpukil(){
+	exit_hypervisor();
 }
 
-void syscall3() {
-*(SCREEN+77) = '>';
+void undefined_trap(){
+	exit_hypervisor();
 }
-
-void syscall4() {
-*(SCREEN+76) = '<';
-}
-
-void syscall5() {
-*(SCREEN+75) = '>';
-}
-
-void syscall6() {
-*(SCREEN+74) = '<';
-}
-
-void syscall7() {
-*(SCREEN+73) = '>';
-}
-
-void syscall8() {
-*(SCREEN+72) = '<';
-}
-
-void syscall9() {
-*(SCREEN+71) = '>';
-}
-
-void syscallA() {
-*(SCREEN+70) = '<';
-}
-
-void syscallB() {
-*(SCREEN+69) = '>';
-}
-
-void syscallC() {
-*(SCREEN+68) = '<';
-}
-
-void syscallD() {
-*(SCREEN+67) = '>';
-}
-
-void syscallE() {
-*(SCREEN+66) = '<';
-}
-
-void syscallF() {
-*(SCREEN+65) = '>';
-}
-
-void syscall10() {
-*(SCREEN+64) = '<';
-}
-
-void syscall13() {
-*(SCREEN+61) = '>';
-}
-
-void syscall14() {
-*(SCREEN+60) = '<';
-}
-
-void syscall15() {
-*(SCREEN+59) = '>';
-}
-
-void syscall16() {
-*(SCREEN+58) = '<';
-}
-
-void syscall17() {
-*(SCREEN+57) = '>';
-}
-
-void syscall18() {
-*(SCREEN+56) = '<';
-}
-
-void syscall19() {
-*(SCREEN+55) = '>';
-}
-
-void syscall1A() {
-*(SCREEN+54) = '<';
-}
-
-void syscall1B() {
-*(SCREEN+53) = '>';
-}
-
-void syscall1C() {
-*(SCREEN+52) = '<';
-}
-
-void syscall1D() {
-*(SCREEN+51) = '>';
-}
-
-void syscall1E() {
-*(SCREEN+50) = '<';
-}
-
-void syscall1F() {
-*(SCREEN+49) = '>';
-}
-
-void syscall20() {
-*(SCREEN+48) = '<';
-}
-
-void syscall21() {
-*(SCREEN+47) = '>';
-}
-
-void syscall22() {
-*(SCREEN+46) = '<';
-}
-
-void syscall23() {
-*(SCREEN+45) = '>';
-}
-
-void syscall24() {
-*(SCREEN+44) = '<';
-}
-
-void syscall25() {
-*(SCREEN+43) = '>';
-}
-
-void syscall26() {
-*(SCREEN+42) = '<';
-}
-
-void syscall27() {
-*(SCREEN+41) = '>';
-}
-
-void syscall28() {
-*(SCREEN+40) = '<';
-}
-
-void syscall29() {
-*(SCREEN+39) = '<';
-}
-
-void syscall2A() {
-*(SCREEN+38) = '<';
-}
-
-void syscall2B() {
-*(SCREEN+37) = '>';
-}
-
-void syscall2C() {
-*(SCREEN+36) = '<';
-}
-
-void syscall2D() {
-*(SCREEN+35) = '>';
-}
-
-void syscall2E() {
-*(SCREEN+34) = '<';
-}
-
-void syscall2F() {
-*(SCREEN+33) = '>';
-}
-
-void syscall30() {
-*(SCREEN+32) = '<';
-}
-
-void syscall31() {
-*(SCREEN+31) = '>';
-}
-
-void syscall32() {
-*(SCREEN+30) = '<';
-}
-
-void syscall33() {
-*(SCREEN+29) = '>';
-}
-
-void syscall34() {
-*(SCREEN+28) = '<';
-}
-
-void syscall35() {
-*(SCREEN+27) = '>';
-}
-
-void syscall36() {
-*(SCREEN+26) = '<';
-}
-
-void syscall37() {
-*(SCREEN+25) = '>';
-}
-
-void syscall38() {
-*(SCREEN+24) = '<';
-}
-
-void syscall39() {
-*(SCREEN+23) = '<';
-}
-
-void syscall3A() {
-*(SCREEN+22) = '<';
-}
-
-void syscall3B() {
-*(SCREEN+21) = '>';
-}
-
-void syscall3C() {
-*(SCREEN+20) = '<';
-}
-
-void syscall3D() {
-*(SCREEN+19) = '>';
-}
-
-void syscall3E() {
-*(SCREEN+18) = '<';
-}
-
-void syscall3F() {
-*(SCREEN+17) = '>';
-}
-
-void reset(){}
-void pagfault(){}
-void restorkey(){}
-void alttabkey(){}
-void vf011rd(){}
-void vf011wr(){}
-void reserved(){}
-void cpukil(){}
-
 
 
 // Now we select the SYSCALL segment to hold the SYSCALL/trap entry point table.
@@ -342,9 +406,9 @@ export struct SysCall[] SYSCALLS = {
 	{ JMP, &syscallD, NOP },
 	{ JMP, &syscallE, NOP },
 	{ JMP, &syscallF, NOP },
-	{ JMP, &syscall10, NOP }, 
-	{ JMP, &SECURENTR, NOP },
-	{ JMP, &SECUREXIT NOP }, 
+	{ JMP, &syscall10, NOP },
+	{ JMP, &securentr, NOP },
+	{ JMP, &securexit, NOP }, 
 	{ JMP, &syscall13, NOP },
 	{ JMP, &syscall14, NOP },
 	{ JMP, &syscall15, NOP },
@@ -393,7 +457,6 @@ export struct SysCall[] SYSCALLS = {
 };
 
 export align(0x100) struct SysCall[] TRAPS = {
-	{JMP, &main, NOP},
 	{JMP, &reset, NOP},
   	{JMP, &pagfault, NOP},
   	{JMP, &restorkey, NOP},  
