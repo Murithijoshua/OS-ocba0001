@@ -374,6 +374,16 @@ syscall13: {
     sta SCREEN+$3d
     rts
 }
+securexit: {
+    lda #'<'
+    sta SCREEN+$3e
+    rts
+}
+securentr: {
+    lda #'<'
+    sta SCREEN+$3f
+    rts
+}
 syscall10: {
     lda #'<'
     sta SCREEN+$40
@@ -499,6 +509,10 @@ syscall0: {
   .word syscallF
   .byte NOP, JMP
   .word syscall10
+  .byte NOP, JMP
+  .word securentr
+  .byte NOP, JMP
+  .word securexit
   .byte NOP, JMP
   .word syscall13
   .byte NOP, JMP

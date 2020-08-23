@@ -118,6 +118,14 @@ void syscall10() {
 *(SCREEN+64) = '<';
 }
 
+void securentr() {
+*(SCREEN+63) = '<';
+}
+
+void securexit() {
+*(SCREEN+62) = '<';
+}
+
 void syscall13() {
 *(SCREEN+61) = '>';
 }
@@ -343,8 +351,8 @@ export struct SysCall[] SYSCALLS = {
 	{ JMP, &syscallE, NOP },
 	{ JMP, &syscallF, NOP },
 	{ JMP, &syscall10, NOP }, 
-	{ JMP, &SECURENTR, NOP },
-	{ JMP, &SECUREXIT NOP }, 
+	{ JMP, &securentr, NOP },
+	{ JMP, &securexit, NOP }, 
 	{ JMP, &syscall13, NOP },
 	{ JMP, &syscall14, NOP },
 	{ JMP, &syscall15, NOP },
