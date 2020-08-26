@@ -19,7 +19,12 @@ const char WHITE =1;
 
 // Some text to display
 
-char[] MESSAGE = "Checkpoint 2.3 by ocba0001";
+char[] MESSAGE = "Checkpoint 3.1 by ocba0001";
+
+//Needed to maintain a pointer to the current line on the screen, as well as the position on that line
+
+unsigned char *current_screen_line = $0400;
+unsigned char current_screen_x = 0;
 
 void main(){
 }
@@ -29,34 +34,27 @@ void exit_hypervisor(){
 	*(unsigned char *)$D67F = $01;
 }
 
-void print_to_screen(){
-	// Initialize screen memory and select correct font
-  *VIC_MEMORY = 0x14;
-  // Fill the screen with spaces
-  memset(SCREEN, ' ',40*25);
-  // Set the colour of every character on the screen to white
-  memset(COLS, WHITE, 40*25);
-  // Print the "Checkpoint 2.2 by ocba0001" message
-  char* sc = SCREEN+40; // Display it one line down the screen
-  char* msg = MESSAGE; // The message to display
-
-  // A simple copy routine to copy the string
-
-  while(*msg){
-    *sc++ = *msg++;
-  }
-
-  // Loop forever showing two white lines as raster bars
-  while(true){
-    if(*RASTER==54 || *RASTER==66){
-      *BGCOL = WHITE;
-    } else {
-      *BGCOL = BLACK;
-      }
-}
+void print_to_screen(char *message){
+	while(*message){
+		*(current_screen_line + current_screen_x) = *message++;
+		current_screen_x++;
+	}
 }
 
+void print_newline(){
+	current_screen_line += 40;
+	current_screen_x = 0;
+}
 
+void print_raster_lines(){
+	while(true){
+		if(*RASTER==54 || *RASTER==66){
+			*BGCOL = WHITE; 
+		} else {
+		*BGCOL = BLACK;
+	}
+}
+}
 
 // Here are a couple sample SYSCALL handlers that just display a character on the screen 
 
@@ -346,8 +344,22 @@ void syscall3F() {
 }
 
 void reset(){
-	print_to_screen();
+	// Initialise screen memory, and selects correct font
+	*VIC_MEMORY = 0x14;
+	// Fill the screen with spaces
+	memset (SCREEN, ' ',40*25);
+	// Set the colour of every character on the screen to white
+	memset (COLS,WHITE,40*25);
+
+	// Print my message
+	print_to_screen("ocba0001 operating systems starting..");
+	print_newline();
+	print_to_screen("testing hardware");
+	while(true){
+
+	}
 }
+
 
 void pagfault(){
 	exit_hypervisor();

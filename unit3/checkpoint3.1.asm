@@ -8,16 +8,13 @@
 .segmentdef Data [startAfter="Code", min=$8200, max=$bdff]
 .segmentdef Stack [min=$be00, max=$beff, fill]
 .segmentdef Zeropage [min=$bf00, max=$bfff, fill]
-  // Some definitions of addresses and special values that this program uses
-  .label RASTER = $d012
   .label VIC_MEMORY = $d018
   .label SCREEN = $400
-  .label BGCOL = $d021
   .label COLS = $d800
-  .const BLACK = 0
   .const WHITE = 1
   .const JMP = $4c
   .const NOP = $ea
+  .label current_screen_line = 2
 .segment Code
 main: {
     rts
@@ -57,13 +54,7 @@ pagfault: {
     rts
 }
 reset: {
-    jsr print_to_screen
-    rts
-}
-print_to_screen: {
-    .label sc = 4
-    .label msg = 2
-    // Initialize screen memory and select correct font
+    // Initialise screen memory, and selects correct font
     lda #$14
     sta VIC_MEMORY
     ldx #' '
@@ -86,55 +77,67 @@ print_to_screen: {
     lda #>$28*$19
     sta.z memset.num+1
     jsr memset
-    lda #<SCREEN+$28
-    sta.z sc
-    lda #>SCREEN+$28
-    sta.z sc+1
-    lda #<MESSAGE
-    sta.z msg
-    lda #>MESSAGE
-    sta.z msg+1
-  // A simple copy routine to copy the string
+    lda #<$400
+    sta.z current_screen_line
+    lda #>$400
+    sta.z current_screen_line+1
+    lda #<message
+    sta.z print_to_screen.message
+    lda #>message
+    sta.z print_to_screen.message+1
+    jsr print_to_screen
+    jsr print_newline
+    lda #<$400+$28
+    sta.z current_screen_line
+    lda #>$400+$28
+    sta.z current_screen_line+1
+    lda #<message1
+    sta.z print_to_screen.message
+    lda #>message1
+    sta.z print_to_screen.message+1
+    jsr print_to_screen
+  __b1:
+    jmp __b1
+  .segment Data
+    message: .text "ocba0001 operating systems starting.."
+    .byte 0
+    message1: .text "testing hardware"
+    .byte 0
+}
+.segment Code
+// print_to_screen(byte* zeropage(4) message)
+print_to_screen: {
+    .label message = 4
+    ldx #0
   __b1:
     ldy #0
-    lda (msg),y
+    lda (message),y
     cmp #0
     bne __b2
-  __b3:
-    lda #$36
-    cmp RASTER
-    beq __b4
-    lda #$42
-    cmp RASTER
-    beq __b4
-    lda #BLACK
-    sta BGCOL
-    jmp __b3
-  __b4:
-    lda #WHITE
-    sta BGCOL
-    jmp __b3
+    rts
   __b2:
+    stx.z $ff
     ldy #0
-    lda (msg),y
-    sta (sc),y
-    inc.z sc
+    lda (message),y
+    ldy.z $ff
+    sta (current_screen_line),y
+    inc.z message
     bne !+
-    inc.z sc+1
+    inc.z message+1
   !:
-    inc.z msg
-    bne !+
-    inc.z msg+1
-  !:
+    inx
     jmp __b1
 }
+print_newline: {
+    rts
+}
 // Copies the character c (an unsigned char) to the first num characters of the object pointed to by the argument str.
-// memset(void* zeropage(4) str, byte register(X) c, word zeropage(2) num)
+// memset(void* zeropage(6) str, byte register(X) c, word zeropage(4) num)
 memset: {
-    .label end = 2
-    .label dst = 4
-    .label num = 2
-    .label str = 4
+    .label end = 4
+    .label dst = 6
+    .label num = 4
+    .label str = 6
     lda.z num
     bne !+
     lda.z num+1
@@ -423,10 +426,6 @@ syscall0: {
     jsr exit_hypervisor
     rts
 }
-.segment Data
-  // Some text to display
-  MESSAGE: .text "Checkpoint 2.3 by ocba0001"
-  .byte 0
 .segment Syscall
   SYSCALLS: .byte JMP
   .word syscall0
