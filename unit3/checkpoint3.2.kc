@@ -46,6 +46,45 @@ void print_newline(){
 	current_screen_x = 0;
 }
 
+void print_hex(unsigned short value)
+{
+	char[5] hex;
+	unsigned char i;
+	for (i=0; i<4;i++){
+		if (value<0xa000) hex[i]='0'+(char) (value>>12);
+		else hex[i]=(char)(value>>12)-9;
+		value<<=4;
+	}
+	hex[4]=0;
+	print_to_screen(hex);
+}
+
+// test memory part 
+void test_memory(){
+	unsigned short mem_start = $0800;
+	unsigned short mem_end = $0800;
+	volatile unsigned char *p;
+	byte flag = 0;
+
+	for (p = $0800; p < $8000; p++){
+		for (byte i = 0; i < 255; i++){
+			if(*p !=i){
+				flag = 1;
+				print_to_screen("memory error");
+				print_hex((unsigned short)p);
+				print_newline();
+				break;
+			}
+		}
+		if(flag==1) break;
+		mem_end = p; 
+	}
+	print_to_screen("memory found at $");
+	print_hex(mem_start);
+	print_to_screen(" - $");
+	print_hex((unsigned short)p);
+}
+
 void print_raster_lines(){
 	while(true){
 		if(*RASTER==54 || *RASTER==66){
@@ -355,8 +394,13 @@ void reset(){
 	print_to_screen("ocba0001 operating system starting..");
 	print_newline();
 	print_to_screen("testing hardware");
-	while(true){
+	print_newline();
 
+	test_memory();
+	print_newline();
+	print_to_screen("finished testing hardware");
+
+	while(true){
 	}
 }
 
