@@ -430,6 +430,11 @@ void reset(){
 	print_newline();
 	print_to_screen("finished testing hardware");
 
+	detect_devices();
+	print_newline();
+	detect_vicii(1);
+	print_newline();
+
 	while(true){
 	}
 }
