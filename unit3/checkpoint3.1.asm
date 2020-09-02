@@ -99,7 +99,7 @@ reset: {
   __b1:
     jmp __b1
   .segment Data
-    message: .text "ocba0001 operating systems starting.."
+    message: .text "ocba0001 operating system starting.."
     .byte 0
     message1: .text "testing hardware"
     .byte 0

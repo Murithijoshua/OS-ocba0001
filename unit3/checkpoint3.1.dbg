@@ -389,10 +389,10 @@
          $83cd,$83cd,1,427,5,427,7
       </Block>
       <Block name="Data">
-         $83ce,$83f2,1,102,14,102,18
-         $83f3,$83f3,1,103,5,103,9
-         $83f4,$8403,1,104,15,104,19
-         $8404,$8404,1,105,5,105,9
+         $83ce,$83f1,1,102,14,102,18
+         $83f2,$83f2,1,103,5,103,9
+         $83f3,$8402,1,104,15,104,19
+         $8403,$8403,1,105,5,105,9
       </Block>
       <Block name="FillMinMax">
          $be00,$beff,1,9,1,9,11
@@ -790,10 +790,10 @@
 
    <Segment name="Data" dest="" values="START,END,FILE_IDX,LINE1,COL1,LINE2,COL2">
       <Block name="Data">
-         $83ce,$83f2,1,102,14,102,18
-         $83f3,$83f3,1,103,5,103,9
-         $83f4,$8403,1,104,15,104,19
-         $8404,$8404,1,105,5,105,9
+         $83ce,$83f1,1,102,14,102,18
+         $83f2,$83f2,1,103,5,103,9
+         $83f3,$8402,1,104,15,104,19
+         $8403,$8403,1,105,5,105,9
       </Block>
    </Segment>
 
@@ -905,7 +905,7 @@
       Syscall,$8000,SYSCALLS
       Syscall,$8100,TRAPS
       Data,$83ce,message
-      Data,$83f4,message1
+      Data,$83f3,message1
    </Labels>
 
    <Breakpoints values="SEGMENT,ADDRESS,ARGUMENT">

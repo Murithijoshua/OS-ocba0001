@@ -19,7 +19,7 @@ const char WHITE =1;
 
 // Some text to display
 
-char[] MESSAGE = "Checkpoint 3.2 by ocba0001";
+char[] MESSAGE = "Checkpoint 3.1 by ocba0001";
 
 //Needed to maintain a pointer to the current line on the screen, as well as the position on that line
 
