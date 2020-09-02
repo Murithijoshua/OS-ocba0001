@@ -19,7 +19,7 @@ const char WHITE =1;
 
 // Some text to display
 
-char[] MESSAGE = "Checkpoint 3.1 by ocba0001";
+char[] MESSAGE = "Checkpoint 3.2 by ocba0001";
 
 //Needed to maintain a pointer to the current line on the screen, as well as the position on that line
 
@@ -83,6 +83,36 @@ void test_memory(){
 	print_hex(mem_start);
 	print_to_screen(" - $");
 	print_hex((unsigned short)p);
+}
+
+// detect devices function
+
+void detect_devices(){
+	for(unsigned short i= $D000; i< $DFF0 ; i=i+10){
+		if( detect_vicii(i) == 1){
+			print_to_screen("vic-ii detected  at $");
+			print_hex((unsigned short)i);
+			print_newline();
+			break;}
+		}
+		print_to_screen("finished probing for devices");
+	}
+
+char detect_vicii(unsigned short address){
+// Pointer where VIC-II is suspected to be
+
+	volatile unsigned char *p;
+	unsigned char v1,v2;
+	unsigned short i;
+
+	v1=p[$12];  //Read start address +12 
+	for(i=1;i<1000;i++) continue;
+	v2=p[$12]; //Read again
+
+if(v2>v1){
+	print_to_screen("Seems to be a VIC-II here");
+}
+return 1;
 }
 
 void print_raster_lines(){
